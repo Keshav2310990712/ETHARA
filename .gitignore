@@ -1,0 +1,37 @@
+# Node dependencies
+node_modules/
+**/node_modules/
+
+# Production/Build outputs
+dist/
+**/dist/
+.dist/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Databases
+*.sqlite
+*.db
+**/database.sqlite
+
+# System and logs
+logs
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
