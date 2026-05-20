@@ -150,24 +150,28 @@ const seedDatabase = async () => {
 };
 
 // Serve static assets in production
-if (process.env.NODE_ENV === 'production') {
-  const distPath = path.join(__dirname, '..', 'frontend', 'dist');
-  app.use(express.static(distPath));
-  
-  app.get('*', (req, res) => {
-    // Exclude API paths
-    if (!req.path.startsWith('/api/')) {
-      res.sendFile(path.join(distPath, 'index.html'));
-    } else {
-      res.status(404).json({ message: 'API endpoint not found' });
-    }
-  });
-} else {
-  // Simple welcome route for local backend check
-  app.get('/', (req, res) => {
-    res.json({ message: 'Welcome to Ethara Project Manager API' });
-  });
-}
+// if (process.env.NODE_ENV === 'production') {
+//   const distPath = path.join(__dirname, '..', 'frontend', 'dist');
+//   app.use(express.static(distPath));
+
+//   app.get('*', (req, res) => {
+//     // Exclude API paths
+//     if (!req.path.startsWith('/api/')) {
+//       res.sendFile(path.join(distPath, 'index.html'));
+//     } else {
+//       res.status(404).json({ message: 'API endpoint not found' });
+//     }
+//   });
+// } else {
+//   // Simple welcome route for local backend check
+//   app.get('/', (req, res) => {
+//     res.json({ message: 'Welcome to Ethara Project Manager API' });
+//   });
+// }
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to Ethara Project Manager API' });
+});
 
 // Database sync & start server
 sequelize.sync({ alter: true })
